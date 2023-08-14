@@ -1,5 +1,7 @@
 import os, sys, shutil
 
+from PyQt5.QtGui import QFont
+
 from script import remove_background_from_image, open_directory
 
 # Get the absolute path of the current script file
@@ -13,11 +15,16 @@ sys.path.insert(0, os.getcwd())  # Add the current directory as well
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QFrame, QSizePolicy, QHBoxLayout, \
     QPushButton, QMessageBox
-from PyQt5.QtCore import QThread
+from PyQt5.QtCore import QThread, QCoreApplication
 from PyQt5.QtCore import Qt
 
 from findPathWidget import FindPathWidget
 from listViewer import ListViewerWidget
+
+QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+QCoreApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)  # HighDPI support
+
+QApplication.setFont(QFont('Arial', 12))
 
 
 class Thread(QThread):
